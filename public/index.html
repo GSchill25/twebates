@@ -1,10 +1,29 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Test static html file.</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+        <script>
+        $(document).ready(function() {
+                                        $('.slideDiv').on("click", function(){ $(this).slideUp();});
+                                        $("button").on("click", function() { $(".el").after($(this)); });
+                                        });
+
+        </script>
+        <style>
+                .slideDiv {
+margin-top: 30px;
+background-color: blue;
+                }
+                .el {
+                 margin-top: 30px;
+ background-color: blue;   
+                }
+        </style>
 </head>
 <body>
-  <p> Testing to see if changes are displayed in application.</p>
+        <div class="slideDiv">I am a div</div>
+        <button>Cut and Paste</button>
+        <div class="el">I am another div</div>
 </body>
 </html>
