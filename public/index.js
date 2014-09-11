@@ -4,7 +4,7 @@ $(document).ready(function() {
     $(this).css("background-color","blue");});   
     $(".color").on("mouseenter", function() {
     $(this).css("background-color","red");});
-    $("p").css("background-color", "green").show("slow");
+    $("#green").css("background-color", "green").show("slow");
     $("#fadeIn").fadeIn();
 });
 
