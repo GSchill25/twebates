@@ -12,7 +12,7 @@ $(document).ready(function() {
     $("#eg2").on("click", function(){ $(this).fadeOut();});
     $("img").animate({ opacity: 0.25 }, 5000).css("float", "right");
     $("#insert").html("<p>This paragraph is added with jquery</p>");
-     $('form[name="default"] input').val("Default Value inserted with jquery");
+    $("#default").val("Default");
 });
 
 
