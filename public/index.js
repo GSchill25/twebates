@@ -1,15 +1,12 @@
 $(document).ready(function() {
-    $('.slideDiv').on("click", function(){ $(this).slideUp();});
-    $("button").on("click", function() { $(".el").after($(this)); });
+    $('.slideDiv').on("click", function(){ $(this).slideDown();});
+    $(".el").on("mouseleave", function() {
+    $(this).css("background-color","blue");});   
+    $(".el").on("mouseenter", function() {
+    $(this).css("background-color","red");});
 });
 
-$(".el").on("mouseleave", function() {
-    $(this).css("background-color","blue");
-});
-        
-$(".el").on("mouseenter", function() {
-    $(this).css("background-color","red");
-});
+
 
 //Load Json without jquery
 function doXMLHttpRequest() {
