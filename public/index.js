@@ -10,7 +10,7 @@ $(document).ready(function() {
     $("fadeIn").css("font-size", "50px");
     $(".color").on("click", function(){ $(this).slideToggle();});
     $("#eg2").on("click", function(){ $(this).fadeOut();});
-    $("img").animate({ opacity: 0.25 }, 5000);
+    $("img").animate({ opacity: 0.25 }, 5000).show("slow");
 });
 
 
