@@ -5,7 +5,11 @@ $(document).ready(function() {
     $(".color").on("mouseenter", function() {
     $(this).css("background-color","red");});
     $("#green").css("background-color", "green").show("slow");
-    $("#fadeIn").fadeIn(2000);
+    $("#fadeIn").fadeIn("slow");
+    $("p").css("font-style", "italic");
+    $("fadeIn").css("font-size", "50px");
+    $(".color").on("click", function(){ $(this).slideToggle();});
+
 });
 
 
