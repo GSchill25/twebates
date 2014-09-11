@@ -1,34 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-</script>
-        <script>
-        $(document).ready(function() {
-                                        $('.slideDiv').on("click", function(){ $(this).slideUp();});
-                                        $("button").on("click", function() { $(".el").after($(this)); });
-                                        });
-$("#el").on("mouseleave", function() {
-           $(this).css("background-color","blue");
-        });
-        $(".el").on("mouseenter", function() {
-           $(this).css("background-color","red");
-        });
-        </script>
-        <style>
-                .slideDiv {
-margin-top: 30px;
-background-color: blue;
-                }
-                .el {
-                 margin-top: 30px;
- background-color: blue;   
-                }
-        </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script src="index.js"></script>
 </head>
 <body>
-        <div class="slideDiv">I am a div</div>
-        <button>Cut and Paste</button>
-        <div class="el">I am another div</div>
+    <h2> Practicing with jquery ajax and json. </h2>
+    <div class="slideDiv">I am a div</div>
+    <button>Cut and Paste</button>
+    <div class="el">I am another div</div>
 </body>
 </html>
