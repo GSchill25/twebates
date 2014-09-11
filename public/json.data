@@ -1,0 +1,6 @@
+{"stocks": [
+	{ "stockName":"Apple" , "price":"$496.43" },
+	{ "stockName":"Google" , "price":"$1156.20" },
+	{ "stockName":"Microsoft" , "price":"$67.89" }
+	{ "stockName":"Yahoo" , "price":"$45.67" }
+	]}
