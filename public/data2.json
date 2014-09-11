@@ -1,0 +1,7 @@
+{"assignments": [
+	{ "aName":"JSON" , "dueDate":"9/1/14" },
+	{ "aName":"Ajax" , "dueDate":"9/3/14" },
+	{ "aName":"Jquery" , "dueDate":"8/30/14" },
+	{ "aName":"Javascript" , "dueDate":"9/5/14" }
+	{ "aName":"Node" , "dueDate":"10/1/14" }
+	]}
