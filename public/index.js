@@ -39,7 +39,7 @@ function processResponse(responseJSON) {
                 displayText += "<li>"
                                         +stock.stockName + " " 
                                         + stock.price + "<\/li>";
-                }
+        }
         displayText += "<\/ol>";
         document.getElementById("responseArea").innerHTML = displayText;
 }
