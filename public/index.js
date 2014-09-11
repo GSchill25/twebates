@@ -5,7 +5,7 @@ $(document).ready(function() {
     $(".color").on("mouseenter", function() {
     $(this).css("background-color","red");});
     $("#green").css("background-color", "green").show("slow");
-    $("#fadeIn").fadeIn();
+    $("#fadeIn").fadeIn(2000);
 });
 
 
