@@ -9,7 +9,7 @@ $(document).ready(function() {
     $("p").css("font-style", "italic");
     $("fadeIn").css("font-size", "50px");
     $(".color").on("click", function(){ $(this).slideToggle();});
-
+    $("eg2").on("click", function(){ $(this).fadeOut();});
 });
 
 
