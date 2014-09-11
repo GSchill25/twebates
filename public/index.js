@@ -53,7 +53,7 @@ $(function() {    // do once original document loaded and ready
                         var displayText = 
                                 "There are " 
                                 + responseObject.assignments.length 
-                                + " assignments:<ol>";
+                                + " assignments:<ul>";
                         for (var i = 0; i<responseObject.assignments.length; i++) {
                                 var assignment = responseObject.assignments[i];
                                 displayText += "<li>"
