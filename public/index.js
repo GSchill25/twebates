@@ -1,9 +1,11 @@
 $(document).ready(function() {
-    $('.slideDiv').on("click", function(){ $(this).slideDown();});
-    $(".el").on("mouseleave", function() {
+    $('.slideDiv').on("click", function(){ $(this).slideUp();});
+    $(".color").on("mouseleave", function() {
     $(this).css("background-color","blue");});   
-    $(".el").on("mouseenter", function() {
+    $(".color").on("mouseenter", function() {
     $(this).css("background-color","red");});
+    $("p").css("background-color", "green").show("slow");
+    $("#fadeIn").fadeIn();
 });
 
 
