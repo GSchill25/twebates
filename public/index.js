@@ -54,19 +54,10 @@ function processResponse(responseJSON) {
 //Load Json with jquery
 $(function() {    // do once original document loaded and ready
         $('form[name="eg2"] input').click(function() {
-                $.getJSON("data2.json", function(responseObject, diditwork) {
+                $.getJSON("http://btc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
-                        var displayText = 
-                                "There are " 
-                                + responseObject.assignments.length 
-                                + " assignments:<ul>";
-                        for (var i = 0; i<responseObject.assignments.length; i++) {
-                                var assignment = responseObject.assignments[i];
-                                displayText += "<li>"
-                                                        + assignment.aName + " " 
-                                                        + assignment.dueDate + "<\/li>";
-                                }
-                        displayText += "<\/ul>";
+                        var displayText = responseObject.data.coin
+                                
                 $("#responseArea2").html(displayText);
                 } );  // getJSON
         } );  // click
