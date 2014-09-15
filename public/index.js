@@ -1,4 +1,4 @@
-window.setInterval(refresh, 2000);
+
 
 //Load Json with jquery
 $(function refresh() {    // do once original document loaded and ready
@@ -9,3 +9,6 @@ $(function refresh() {    // do once original document loaded and ready
                 } );  // getJSON
   } ); // onReady
 
+$(document).ready(function(){
+    window.setInterval(refresh, 2000);
+});
