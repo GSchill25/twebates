@@ -1,0 +1,19 @@
+
+
+table, tr, th {
+    border: 1px solid black;
+}
+
+td {
+    padding: 15px;
+    width: 100px;
+    height: 100px;
+}
+
+.green{
+	background-color: green;
+}
+
+.red{
+	background-color: red;
+}
