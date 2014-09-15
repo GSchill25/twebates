@@ -1,7 +1,7 @@
 
 
 //Load Json with jquery
-$(function refresh() {    // do once original document loaded and ready
+function refresh() {    // do once original document loaded and ready
                 $.getJSON("http://btc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var displayText = responseObject.data.coin.name             
