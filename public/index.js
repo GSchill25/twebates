@@ -56,7 +56,7 @@ $(function() {    // do once original document loaded and ready
         $('form[name="eg2"] input').click(function() {
                 $.getJSON("http://btc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
-                        var displayText = responseObject.status.data.coin
+                        var displayText = responseObject.data.coin.name
                                 
                 $("#responseArea2").html(displayText);
                 } );  // getJSON
