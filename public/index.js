@@ -5,11 +5,11 @@ function refreshBTC() {    // do once original document loaded and ready
                 $.get("http://btc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var percentChangeCoin = Math.round(responseObject.data.markets.coinbase.daily_change.perc * 100)/100; 
-                        var displayTextCoin = responseObject.data.markets.coinbase.value + " " + percentChangeCoin + "%";
+                        var displayTextCoin = responseObject.data.markets.coinbase.daily_change.value + " " + percentChangeCoin + "%";
                         var percentChangebtce = Math.round(responseObject.data.markets.btce.daily_change.perc * 100)/100; 
-                        var displayTextbtce =  responseObject.data.markets.btce.value + " " + percentChangebtce + "%";
+                        var displayTextbtce =  responseObject.data.markets.btce.daily_change.value + " " + percentChangebtce + "%";
                         var percentChangeStamp = Math.round(responseObject.data.markets.bitstamp.daily_change.perc * 100)/100; 
-                        var displayTextStamp= responseObject.data.markets.bitstamp.value + " " + percentChangeStamp + "%";    
+                        var displayTextStamp= responseObject.data.markets.bitstamp.daily_change.value + " " + percentChangeStamp + "%";    
                 $("#responseArea1").html(displayTextCoin);
                 color(".color1", percentChangeCoin);
                 $("#responseArea2").html(displayTextbtce);
@@ -23,9 +23,9 @@ function refreshBTC() {    // do once original document loaded and ready
                 $.get("http://ltc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var percentChangeCoin = Math.round(responseObject.data.markets.btcchina.daily_change.perc * 100)/100; 
-                        var displayTextCoin =  responseObject.data.markets.btcchina.value + " " + percentChangeCoin + "%";
+                        var displayTextCoin =  responseObject.data.markets.btcchina.daily_change.value + " " + percentChangeCoin + "%";
                         var percentChangebtce = Math.round(responseObject.data.markets.btce.daily_change.perc * 100)/100; 
-                        var displayTextbtce = responseObject.data.markets.btce.value + " " + percentChangebtce + "%";
+                        var displayTextbtce = responseObject.data.markets.btce.daily_change.value + " " + percentChangebtce + "%";
                         //var percentChangeStamp = Math.round(responseObject.data.markets.bitstamp.daily_change.perc * 100)/100; 
                         //var displayTextStamp= " ";    
                 $("#responseArea4").html(displayTextCoin);
@@ -40,11 +40,11 @@ function refreshBTC() {    // do once original document loaded and ready
                 $.get("http://dgc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var percentChangeCoin = Math.round(responseObject.data.markets.virculex.daily_change.perc * 100)/100; 
-                        var displayTextCoin =  responseObject.data.markets.virculex.value + " " + percentChangeCoin + "%";
+                        var displayTextCoin =  responseObject.data.markets.virculex.daily_change.value + " " + percentChangeCoin + "%";
                         var percentChangebtce = Math.round(responseObject.data.markets.btc38.daily_change.perc * 100)/100; 
-                        var displayTextbtce = responseObject.data.markets.btc38.value + " " + percentChangebtce + "%";
+                        var displayTextbtce = responseObject.data.markets.btc38.daily_change.value + " " + percentChangebtce + "%";
                         var percentChangeStamp = Math.round(responseObject.data.markets.vircurex.daily_change.perc * 100)/100; 
-                        var displayTextStamp= responseObject.data.markets.vircurex.value + " " + percentChangeStamp + "%";    
+                        var displayTextStamp= responseObject.data.markets.vircurex.daily_change.value + " " + percentChangeStamp + "%";    
                 $("#responseArea7").html(displayTextCoin);
                 color(".color3", percentChangeCoin);
                 $("#responseArea8").html(displayTextbtce);
@@ -58,11 +58,11 @@ function refreshBTC() {    // do once original document loaded and ready
                 $.get("http://qrk.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var percentChangeCoin = Math.round(responseObject.data.markets.bter.daily_change.perc * 100)/100; 
-                        var displayTextCoin =  responseObject.data.markets.bter.value + " " + percentChangeCoin + "%";
+                        var displayTextCoin =  responseObject.data.markets.bter.daily_change.value + " " + percentChangeCoin + "%";
                         var percentChangebtce = Math.round(responseObject.data.markets.btc38.daily_change.perc * 100)/100; 
-                        var displayTextbtce = responseObject.data.markets.btc38.value + " " + percentChangebtce + "%";
+                        var displayTextbtce = responseObject.data.markets.btc38.daily_change.value + " " + percentChangebtce + "%";
                         var percentChangeStamp = Math.round(responseObject.data.markets.vircurex.daily_change.perc * 100)/100; 
-                        var displayTextStamp= responseObject.data.markets.vircurex.value + " " + percentChangeStamp + "%";    
+                        var displayTextStamp= responseObject.data.markets.vircurex.daily_change.value + " " + percentChangeStamp + "%";    
                 $("#responseArea10").html(displayTextCoin);
                 color(".color4", percentChangeCoin);
                 $("#responseArea11").html(displayTextbtce);
@@ -74,11 +74,20 @@ function refreshBTC() {    // do once original document loaded and ready
 
 
 function color(tdString, percent){
-    if (percent > 0){
+    if (percent > 0.25 && percent <= 2.50){
+        $(tdString).addClass("lightgreen");
+    }
+    else if (percent > 2.50){
         $(tdString).addClass("green");
     }
-    else{
+    else if (percent < -0.25 && percent >= -2.50){
+        $(tdString).addClass("lightred");
+    }
+    else if (percent< -2.50){
         $(tdString).addClass("red");
+    }
+    else{
+        $(tdString).addClass("gray");
     }
 
 };
