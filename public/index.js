@@ -7,6 +7,5 @@ $(function refresh() {    // do once original document loaded and ready
                         var displayText = responseObject.data.coin.name             
                 $("#responseArea2").html(displayText);
                 } );  // getJSON
-        } );  // click
   } ); // onReady
 
