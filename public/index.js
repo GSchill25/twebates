@@ -1,7 +1,7 @@
 
 
 //Load Json with jquery
-function refreshBTC() {    // do once original document loaded and ready
+function refreshBTC() { 
                 $.get("http://btc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var percentChangeCoin = Math.round(responseObject.data.markets.coinbase.daily_change.perc * 100)/100; 
@@ -16,10 +16,10 @@ function refreshBTC() {    // do once original document loaded and ready
                 color('.color5', percentChangebtce);
                 $("#responseArea3").html(displayTextStamp);
                 color(".color9", percentChangeStamp);
-                } );  // getJSON
-  }; // onReady
+                } );
+  };
 
-  function refreshLTC() {    // do once original document loaded and ready
+  function refreshLTC() {
                 $.get("http://ltc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var percentChangeCoin = Math.round(responseObject.data.markets.btcchina.daily_change.perc * 100)/100; 
@@ -33,10 +33,10 @@ function refreshBTC() {    // do once original document loaded and ready
                 $("#responseArea5").html(displayTextbtce);
                 color(".color6", percentChangebtce);
                 //$("#responseArea3").html(displayTextStamp);
-                } );  // getJSON
-  }; // onReady
+                } ); 
+  }; 
 
-  function refreshDGC() {    // do once original document loaded and ready
+  function refreshDGC() { 
                 $.get("http://dgc.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var percentChangeCoin = Math.round(responseObject.data.markets.virculex.daily_change.perc * 100)/100; 
@@ -51,10 +51,10 @@ function refreshBTC() {    // do once original document loaded and ready
                 color(".color7", percentChangebtce);
                 $("#responseArea9").html(displayTextStamp);
                 color(".color11", percentChangeStamp);
-                } );  // getJSON
-  }; // onReady
+                } );
+  };
 
-  function refreshQRK() {    // do once original document loaded and ready
+  function refreshQRK() {
                 $.get("http://qrk.blockr.io/api/v1/coin/info", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var percentChangeCoin = Math.round(responseObject.data.markets.bter.daily_change.perc * 100)/100; 
@@ -69,8 +69,8 @@ function refreshBTC() {    // do once original document loaded and ready
                 color(".color8", percentChangebtce);
                 $("#responseArea12").html(displayTextStamp);
                 color(".color12", percentChangeStamp);
-                } );  // getJSON
-  }; // onReady
+                } ); 
+  }; 
 
 
 function color(tdString, percent){
@@ -98,7 +98,7 @@ $(document).ready(function(){
     refreshLTC();
     refreshDGC();
     refreshQRK();
-    window.setInterval(refreshBTC, 60000);
+    window.setInterval(refreshBTC, 60000); //refresh once a minute
     window.setInterval(refreshLTC, 60000);
     window.setInterval(refreshDGC, 60000);
     window.setInterval(refreshQRK, 60000);
