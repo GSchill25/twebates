@@ -102,17 +102,19 @@ $(document).ready(function(){
     window.setInterval(refreshLTC, 60000);
     window.setInterval(refreshDGC, 60000);
     window.setInterval(refreshQRK, 60000);
+});
+
+$(function() {   
     $('form[name="d"] input').click(function() {
                 $.getJSON("data.json", function(responseObject, diditwork) {
                         console.log(diditwork);
                         var displayText = "<ul>"
                         for (var i = 0; i<responseObject.pageDescription.length; i++) {
-                                console.log("executing");
                                 var sentence = responseObject.pageDescription[i];
                                 displayText += "<li>"+ sentence.item + "<\/li>";
                                 }
                         displayText += "<\/ul>";
                 $("#responseDescription").html(displayText);
                 } );  // getJSON
-        } );  // click
-});
+    } );  // click
+} ); // onReady
