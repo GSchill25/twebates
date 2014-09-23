@@ -10,6 +10,22 @@ td {
     height: 100px;
 }
 
+img{
+	padding: 25px;
+}
+
+
+.increase{
+	width: 150px;
+    height: 150px;
+}
+
+.decrease{
+	padding: 15px;
+    width: 100px;
+    height: 100px;
+}
+
 
 .green{
 	background-color: green;
