@@ -92,8 +92,7 @@ function color(tdString, percent){
 
 };
 
-
-$(document).ready(function(){
+function main(){
     refreshBTC();
     refreshLTC();
     refreshDGC();
@@ -102,6 +101,10 @@ $(document).ready(function(){
     window.setInterval(refreshLTC, 60000);
     window.setInterval(refreshDGC, 60000);
     window.setInterval(refreshQRK, 60000);
+};
+
+$(document).ready(function(){
+    main()
 });
 
 $(function() {   
@@ -117,4 +120,5 @@ $(function() {
                 $("#responseDescription").html(displayText);
                 } );  // getJSON
     } );  // click
+    main()
 } ); // onReady
