@@ -1,6 +1,0 @@
-{"pageDescription": [
-	{ "item":"This page displays a heatmap for multiple cryptocurrencies"},
-	{ "item":"Bitcoin, Litecoin, Digitalcoin and Quarkcoin are the columns of the table" },
-	{ "item":"Each box represents a different exchange (ex: Coinbase)" },
-	{ "item":"Each box displays the current price and 24 hour % change of the cryptocurrency" }
-	]}
