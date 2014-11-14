@@ -1,25 +1,159 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-  <meta name="viewport" content="user-scalable=yes,initial-scale=1.0,maximum-scale=1.0" />
 
-  <style>
-  body { padding:10px; margin:0px; background-color: #ccc; }
-  #main { margin: 10px auto 0px auto; }
-  </style>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- The following 3 includes are from CDN -->
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <title>Bitcoin - Explained</title>
 
-  <script src="base_script.js"></script>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
 
-</head> 
+    <!-- Android 5 Chrome Color -->
+    <meta name="theme-color" content="#EE6E73">
+
+     <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/adjust.css" media="screen,projection" />
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+</head>
+
 <body>
-	<p id="count"> Count: </p>
-	<canvas id="main" width="300" height="250"></canvas>
-  <button id="clear">Restart</button><br>
+  <nav id="front-page-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" id="logo"><img src="images/bc_logo.png" height="60" width="60"></a>
+        <ul class= "right side-nav" id="nav-mobile">
+          <li><a href="index.html" class="grey-text darken-2">Home</a></li>
+          <li><a href="mining.html" class="grey-text darken-2">Mining</a></li>
+          <li><a href="blockchain.html" class="grey-text darken-2">Blockchain</a></li>
+          <li><a href="cryptos.html" class="grey-text darken-2">Cryptos</a></li>
+          <li><a href="news.html" class="grey-text darken-2">News</a></li>
+        </ul>
+        <a class="button-collapse" href="#" data-activates='nav-mobile'><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="section" id="index-banner">
+    <div class="container"> 
+      <div class="row">
+        <div class="col s5 m5">
+        <h2 class="header">Bitcoin Basics</h2>
+        <h4 class ="light orange-text lighten-1">Learn about Bitcoin so you can share in the digital revolution.</h4></div>
+        <!-- add space here, to bump over current price -->
+        <div class="col s3 m3 offset-m1">
+         <div class="card orange" id="price">
+          <div class="card-content">
+            <h1>Current Price</h1>
+            <h1 class = "grey-text darken-5"><div id="responseArea1"></div><h1>
+            
+            <!-- insert arrow here -->
+          </div>  
+         </div>
+        </div>  
+        <div class="col s3 m3">
+        </br></br></br></br></br></br>
+          <img src="images/up.png" height="50" width="50" class="hidden" id="up">
+          <img src="images/down.png" height="50" width="50" class="hidden" id="down">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</br></br></br>
+
+    <div class="container">
+    <!--      Outer row-->
+    <div class="row">
+      <div class="col hide-on-small-only m3 l2">
+      <div style="height: 1px;">
+        <ul class="table-of-contents">
+          <li><a href="#p2p">Peer2Peer</a></li>
+          <li><a href="#decentralized">Decentralized</a></li>
+          <li><a href="#wallets">Wallets</a></li>
+          <li><a href="#blockchain">Blockchain</a></li>
+        </ul>
+      </div>
+      </div>
+
+     <div class="section col s12 m9">
+        <div id="download" class="row scrollspy">
+            <h2 class="col s12 header light orange-text lighten-1">Peer to Peer</h2>
+          <p class="caption col s12">Bitcoin is a truly independent global payment network. It's protocol allows users to send payments from one account to another anywhere in the world almost instantaneously. While major US banking transactions usually take 1-3 business days, Bitcoin's peer to peer protocol offers a fast alternative. </p>
+        </div>
+
+        <div><img class="materialboxed" src="images/peers.png" height="250" width="300">
+        </div>
+     
+
+        <div id="download" class="row scrollspy">
+            <h2 class="col s12 header light orange-text lighten-1">Decentralized</h2>
+          <p class="caption col s12">Bitcoin's network is made up of all the individual user's computers who are making transactions. It is not controlled by a central bank, single government, or any government for that matter. This allows transactions fees to be minimal compared to those issued by creditors with traditonal dollars and other currencies. </p>
+        </div>
+        <iframe width="620" height="415" src="http://www.youtube.com/embed/Um63OQz3bjo"></iframe>
+
+
+        <div id="download" class="row scrollspy">
+            <h2 class="col s12 header light orange-text lighten-1">Wallets</h2>
+          <p class="caption col s12">Bitcoin wallets are digital storage places for your bitcoin. They are addressed by a long unique hash like "aj234lnlk5609sn23kfg023". This hash is safe to give out and you will need to for others to send bitcoin to your wallet. Bitcoin wallet software can be downloaded to your local device and this is a very secure way to store your coin. Wallets exist on websites also, but they are at the liberty of the security of that individual website. "Private" or "Local" wallets are much more secure. </p>
+        </div>
+
+        <div class="col s12 m5">
+            <a class="btn waves-effect waves-light" href="https://bitcoinarmory.com/download/">Armory Wallet<i class="mdi-file right"></i></a>
+        </div>
+        <div class="col s12 m5 offset-m2">
+            <a class="btn waves-effect waves-light" href="https://blockchain.info/wallet">BlockChain.info Wallet<i class="mdi-file right"></i></a>
+        </div>
+
+      </br></br>
+      <div id="download" class="row scrollspy">
+        <h2 class="col s12 header light orange-text lighten-1">BlockChain</h2>
+        <p class="caption col s12">The blockchain is a history of every bitcoin transaction ever made. It can be thought of as a public ledger. The blockchain keeps track of what account a payment comes from, the account it is going to, the amount sent, and a number of other details. Below is an example of a transaction hash from the blockchain.</p>
+     </div>
+     <div class="pasty">
+        <pre><code class="language-markup">
+          {"hash": "8d3235kldn324naslkdnlkse"
+          "ver":1,
+          "vin_sz":1,
+          "vout_sz":1,
+          "lock_time":0,
+          "size":224,
+          "in":[
+              {"prev_out":
+                {"hash": 8009aelsk39jkl2838dksl,
+                  "n":0},
+                "scriptSig":"50234802304089423909e2513904",
+              {"prev_out":{
+                "hash":"93b98290c3923s430984j237h2308e2",
+                  "n":1,
+                "scriptSig:92378349e72930c927846e639r9596j572t7"
+              {"prev_out":{
+                "hash":"928eh389509c8376ef3759r785h3tw53",
+                  "n":1,
+                "scriptSig:s528dh2893j5065l2926eb3950c"
+          "out":[
+            {"value":"0.00128940",
+              "scriptPubKey":OP_DUP OP_HASH160 t6d4587190349ejh3029d920r030i3919 OP_EQUALVERIFY OP_CHECKSIG"},
+            {"value":"2.15000000",
+              "scriptPubKey":OP_DUP OP_HASH160 87e829s929e0827u9202836e627e83r3678e789 OP_EQUALVERIFY OP_CHECKSIG"}]}
+        </code></pre>
+      </div>
+
+     </div>   
+
+        
+  <div id="footer" class="section">
+	</div>
+
+  <!--  Scripts-->
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script src="btc.js"></script>
+
 </body>
 </html>
-

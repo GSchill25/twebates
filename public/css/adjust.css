@@ -1,0 +1,29 @@
+nav {
+	background-color: #fff;
+}
+
+#index-banner{
+	background-color: #fff497;
+}
+
+.hidden{
+	visibility: hidden;
+}
+
+.show {
+	visibility: visible;
+	z-index: 9999999;
+}
+
+#price{
+
+}
+
+
+.table-of-contents {
+	position: ;
+}
+
+.pasty{
+	background-color: #fffef4;
+}
