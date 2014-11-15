@@ -24,6 +24,12 @@ nav {
 	position: ;
 }
 
+@media screen and (max-width:480px){
+	.table-of-contents{
+		display: none;
+	}
+}
+
 .pasty{
 	background-color: #fffef4;
 }
@@ -35,5 +41,5 @@ nav {
 .intro{
 	width: 100%;
 
-	height: 65%;
+	height: 400px;
 }
