@@ -28,6 +28,9 @@ nav {
 	.table-of-contents{
 		display: none;
 	}
+	.intro{
+		height: 275px;
+	}
 }
 
 .pasty{
