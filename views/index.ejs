@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js"></script>
+    <title>Twebates</title>
+  </head>
+  <body>
+    <h1>Twebate</h1>
+    <div>
+      <div class="inlineBlock"><span>Your name:
+          <input type="text" value="Chatty" id="name"></span><br><br>
+        <form id="messageForm">
+          <textarea rows="6" cols="50" placeholder="Share something!" maxlength="500" id="outgoingMessage"></textarea>
+          <input type="button" value="Share" disabled id="send">
+        </form>
+      </div>
+      <div class="inlineBlock topAligned"><b>Participants</b><br>
+        <div id="participants"></div>
+      </div>
+    </div>
+    <div class="wrapper">
+
+          <!-- if statement, used to determine if the user has connected his or her Twitter account to the user object -->
+          <% if (user.twitter.profile == undefined) { %>
+
+            <!-- display if the user has no Twitter profile (they will have one if Twitter is connected) -->
+          <a href="/auth/twitter" class="btn btn-default" >Connect to Twitter</a>
+
+        <% } else { %>
+
+          <!-- display a sampling of the user's Twitter profile info -->
+          <!-- addressing the user by name, given via Twitter -->
+          <p>Hello, <%= user.twitter.profile.displayName %>!</p>
+
+          <!-- using EJS helper tags to display profile image from Twitter -->
+          <%- img_tag(user.twitter.profile.photos[0].value) %>
+
+          <!-- display Twitter username, make it a link to the user's Twitter page with EJS helper tag -->
+          <p><b>Username:</b> <%- link_to('@'+user.twitter.profile.username, 'https://twitter.com/'+user.twitter.profile.username) %><br>
+            
+            <!-- display number of Twitter followers -->
+            <b>Followers:</b> <%= user.twitter.profile._json.followers_count %><br>
+
+            <!-- display number of followers the user has on Twitter -->
+            <b>Following:</b> <%= user.twitter.profile._json.friends_count %></p>
+
+          <!-- disconnect from Twitter button (destroys all Twitter records) -->
+          <a href="/disconnect/twitter" class="btn btn-default">Disconnect from Twitter</a>
+
+        <% } %>
+    </div>
+    <div id="messages"></div>
+  </body>
+</html>
