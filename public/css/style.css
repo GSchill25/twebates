@@ -1,8 +1,3 @@
-body {
-    padding: 3em;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
-}
 
 textarea {
     resize: none;
@@ -14,4 +9,13 @@ textarea {
 
 .topAligned {
     vertical-align: top;
+}
+
+#front-page-nav {
+	background-color: #455a64;
+}
+
+#card-row {
+	background-color: #bbdefb;
+	padding-bottom: 40px;
 }

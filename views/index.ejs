@@ -12,19 +12,27 @@
     <title>Twebates</title>
   </head>
 
-    <nav>
+   
+
+  <body>
+    <nav id="front-page-nav">
+      <div id="nav_color" class="container">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Twebates</a>
+        <a href="/" class="brand-logo"><img src="images/logo.png"></a>
+
+        <h3 align="center"> Twebates</h3>
         <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+      </div>
       </div>
     </nav>
 
-  <body>
-    <div class="row">
+
+    <div class="row" id="card-row">
+      </br></br>
       <div class="col s12 m6 l5">
-        <div class="card blue-grey darken-1">
+        <div class="card orange lighten-2 z-depth-5">
         <div class="card-content white-text">
-          <span class="card-title">Card Title</span>
+          <span class="card-title">Twitter Login</span>
              <% if (user.twitter.profile == undefined) { %>
 
               <!-- display if the user has no Twitter profile (they will have one if Twitter is connected) -->
@@ -62,9 +70,9 @@
 
 
       <div class="col s12 m6 l5">
-        <div class="card blue-grey darken-1">
+        <div class="card orange lighten-2 z-depth-5">
         <div class="card-content white-text">
-          <span class="card-title">Card Title</span>
+          <span class="card-title">Current US Trending</span>
           <div>
             <% if (user.twitter.trends == undefined) { %>
             <% } else { %>
@@ -79,20 +87,35 @@
         </div>
         </div>
       </div>
+      
     </div>
+
+    <div class="container">
+    <!--      Outer row-->
+    <div class="row">
+      <div class="col hide-on-small-only s0 m3 l2">
+        <div style="height: 1px;">
+        <div class="inlineBlock topAligned"><b>Participants</b><br>
+          <div id="participants"></div>
+        </div>
+        </div>
+      </div>
     
-    <div>
-      <div class="inlineBlock"><span>Your name:
-          <input type="text" value="Twebator" id="name"></span><br><br>
-        <form id="messageForm">
-          <textarea rows="6" cols="50" placeholder="Share something!" maxlength="500" id="outgoingMessage"></textarea>
-          <input type="button" value="Share" disabled id="send">
-        </form>
+      <div class="section col s12 m9">
+        <div id="download" class="row scrollspy">
+          <div class="inlineBlock"><span>Your name:
+              <input type="text" value="Twebator" id="name"></span><br><br>
+            <form id="messageForm">
+              <textarea rows="6" cols="50" placeholder="Share something!" maxlength="500" id="outgoingMessage"></textarea>
+              <input type="button" value="Share" disabled id="send">
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="inlineBlock topAligned"><b>Participants</b><br>
-        <div id="participants"></div>
-      </div>
+      
+      <div class="section col s12 m9" id="messages"></div>
     </div>
-    <div id="messages"></div>
+  </div>
+
   </body>
 </html>
