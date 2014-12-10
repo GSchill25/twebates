@@ -104,10 +104,11 @@ var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 // the function parameters are what is returned from a successful authentication
 // those parameters are token, tokenSecret, and profile
 
+//callbackURL: "http://"+server_ip_address+":"+server_port+"/auth/twitter/callback" for local use
 passport.use(new TwitterStrategy({
     consumerKey: TWITTER_CONSUMER_KEY,
     consumerSecret: TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://"+"nodesample-gschilli.rhcloud.com"+":"+server_port+"/auth/twitter/callback"
+    callbackURL: "http://"+"nodesample-gschilli.rhcloud.com"+":"+"8000"+"/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
 
