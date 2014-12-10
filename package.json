@@ -10,7 +10,7 @@
     "chatroom"
   ],
   "author": {
-    "name": "Graham Schillin",
+    "name": "Graham Schilling"
   },
   "engines": {
     "node": ">= 0.6.0",
