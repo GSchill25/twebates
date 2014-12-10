@@ -21,6 +21,8 @@ var express = require("express")
   , io = require("socket.io").listen(http)
   , _ = require("underscore");
 
+var socket = io.connect("http://nodesample-gschilli.rhcloud.com:8000");
+
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 
