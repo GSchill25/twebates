@@ -147,15 +147,14 @@ function getTrends(){
     null,
     'HMAC-SHA1'
   );
-
-  superagent.get("https://api.twitter.com/1.1/trends/place.json?id=1")
+  console.log("here");
+  superagent.get('https://api.twitter.com/1.1/trends/place.json?id=1')
 
     .sign(oauth, user.twitter.token, user.twitter.tokenSecret)
 
     .end(function (res) {
-      console.log(user.twitter);
+      console.log(res);
       user.twitter.last_tweet = res.body[0];
-      console.log(user.twitter.last_tweet);
   })
 }
 
