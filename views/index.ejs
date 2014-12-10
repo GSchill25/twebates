@@ -32,7 +32,7 @@
       <div class="col s12 m5 l5">
         <div class="card orange lighten-2 z-depth-5">
         <div class="card-content white-text">
-          <span class="card-title">Twitter Login</span>
+          <span class="card-title">Twitter Login <i class="mdi-communication-vpn-key"></i></span>
              <% if (user.twitter.profile == undefined) { %>
 
               <!-- display if the user has no Twitter profile (they will have one if Twitter is connected) -->
@@ -71,7 +71,7 @@
       <div class="col s12 m5 l5">
         <div class="card orange lighten-2 z-depth-5">
         <div class="card-content white-text">
-          <span class="card-title">Current US Trending</span>
+          <span class="card-title">Current US Trends</span>
           <div>
             <% if (user.twitter.trends == undefined) { %>
             <% } else { %>
@@ -94,7 +94,7 @@
     <div class="row">
       <div class="col hide-on-small-only s0 m3 l2">
         <div style="height: 1px;">
-        <div class="inlineBlock topAligned"><b>Chatters</b><br>
+        <div class="inlineBlock topAligned"><b><i class="mdi-social-people"></i>Chatters</b><br>
           <div id="participants"></div>
         </div>
         </div>
@@ -105,7 +105,8 @@
           <div class="inlineBlock"><span><b>Name:</b>
               <input type="text" value="Twebator" id="name"></span><br><br>
             <form id="messageForm">
-              <textarea rows="6" cols="50" placeholder="Share something!" maxlength="500" id="outgoingMessage"></textarea>
+              <b>Share:         </b><span><i class="mdi-content-create"></i>
+              <textarea rows="6" cols="50" placeholder="...." maxlength="500" id="outgoingMessage"></textarea>
               <input type="button" value="Share" disabled id="send">
             </form>
           </div>
