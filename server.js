@@ -107,7 +107,7 @@ var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 passport.use(new TwitterStrategy({
     consumerKey: TWITTER_CONSUMER_KEY,
     consumerSecret: TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://"+server_ip_address+":"+server_port+"/auth/twitter/callback"
+    callbackURL: "http://"+"nodesample-gschilli.rhcloud.com"+":"+server_port+"/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
 
