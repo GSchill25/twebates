@@ -8,7 +8,7 @@ function init() {
    Note we don't specify a port since we set up our server
    to run on port 8080
    */
-  var socket = io.connect(serverBaseUrl);
+  var socket = io.connect('http://nodesample-gschilli.rhcloud.com:8000/');//8000 runs websockets on openshift 
 
   //We'll save our session ID in a variable for later
   var sessionId = '';
@@ -22,6 +22,11 @@ function init() {
     }
   }
 
+  function grabTopics() {
+    $.twitter.trends.current(printSuccess);
+    //https://api.twitter.com/1.1/trends/place.json?id=1. 
+  }
+
   /*
    When the client successfully connects to the server, an
    event "connect" is emitted. Let's get the session ID and
@@ -33,6 +38,7 @@ function init() {
     sessionId = socket.io.engine.id;
     console.log('Connected ' + sessionId);
     socket.emit('newUser', {id: sessionId, name: $('#name').val()});
+    grabTopics();
   });
 
   /*
