@@ -10,14 +10,7 @@
     "chatroom"
   ],
   "author": {
-    "name": "William Mora",
-    "email": "william.r.mora@gmail.com",
-    "url":  "http://www.williammora.com/"
-  },
-  "homepage": "http://www.williammora.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wmora/nodejs-express-socketio-chatroom.git"
+    "name": "Graham Schillin",
   },
   "engines": {
     "node": ">= 0.6.0",
