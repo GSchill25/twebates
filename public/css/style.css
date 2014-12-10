@@ -19,3 +19,17 @@ textarea {
 	background-color: #bbdefb;
 	padding-bottom: 40px;
 }
+
+
+@media screen and (max-width:995px){
+	#large-only{
+		display: none;
+	}
+}
+
+#chatbox {
+	background-color: #eceff1;
+	padding: 20px;
+	color: black;
+
+}

@@ -19,9 +19,8 @@
       <div id="nav_color" class="container">
       <div class="nav-wrapper">
         <a href="/" class="brand-logo"><img src="images/logo.png"></a>
-
-        <h3 align="center"> Twebates</h3>
-        <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+        <h3 id="large-only" align="center"> Twebates</h3>
+        <!--a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a-->
       </div>
       </div>
     </nav>
@@ -29,6 +28,7 @@
 
     <div class="row" id="card-row">
       </br></br>
+      <div class="col s0 m0 l1"><p></p></div>
       <div class="col s12 m6 l5">
         <div class="card orange lighten-2 z-depth-5">
         <div class="card-content white-text">
@@ -68,7 +68,6 @@
         </div>
       </div>
 
-
       <div class="col s12 m6 l5">
         <div class="card orange lighten-2 z-depth-5">
         <div class="card-content white-text">
@@ -90,20 +89,20 @@
       
     </div>
 
-    <div class="container">
+    <div id="body-container" class="container">
     <!--      Outer row-->
     <div class="row">
       <div class="col hide-on-small-only s0 m3 l2">
         <div style="height: 1px;">
-        <div class="inlineBlock topAligned"><b>Participants</b><br>
+        <div class="inlineBlock topAligned"><b>Chatters</b><br>
           <div id="participants"></div>
         </div>
         </div>
       </div>
     
-      <div class="section col s12 m9">
+      <div id="chatbox" class="section col s12 m9">
         <div id="download" class="row scrollspy">
-          <div class="inlineBlock"><span>Your name:
+          <div class="inlineBlock"><span><b>Name:</b>
               <input type="text" value="Twebator" id="name"></span><br><br>
             <form id="messageForm">
               <textarea rows="6" cols="50" placeholder="Share something!" maxlength="500" id="outgoingMessage"></textarea>
