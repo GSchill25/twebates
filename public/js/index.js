@@ -41,7 +41,7 @@ function init() {
     sessionId = socket.io.engine.id;
     console.log('Connected ' + sessionId);
     socket.emit('newUser', {id: sessionId, name: $('#name').val()});
-    grabTopics();
+    //grabTopics();
   });
 
   /*
