@@ -89,10 +89,13 @@ passport.deserializeUser(function(obj, done) {
 /* Server config */
 
 //Server's IP address
-app.set("ipaddr", "127.0.0.1");
+//app.set("ipaddr", "127.0.0.1");
 
 //Server's port number
-app.set("port", 8080);
+//app.set("port", 8080);
+
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 // Twitter strategy
 // this first part deals with authenticating the user
@@ -103,7 +106,7 @@ app.set("port", 8080);
 passport.use(new TwitterStrategy({
     consumerKey: TWITTER_CONSUMER_KEY,
     consumerSecret: TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://"+"127.0.0.1"+":"+"8080"+"/auth/twitter/callback"
+    callbackURL: "http://"+server_ip_address+":"+server_port+"/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
 
@@ -231,6 +234,6 @@ io.on("connection", function(socket){
 });
 
 //Start the http server at port and IP defined before
-http.listen(app.get("port"), app.get("ipaddr"), function() {
-  console.log("Server up and running. Go to http://" + app.get("ipaddr") + ":" + app.get("port"));
+http.listen(server_port, server_ip_address, function() {
+  console.log("Server up and running. Go to http://" + server_ip_address + ":" + server_port);
 });
