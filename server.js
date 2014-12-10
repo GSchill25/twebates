@@ -134,7 +134,30 @@ passport.use(new TwitterStrategy({
  */
 var participants = [];
 
+function getTrends(){
 
+  var oauth = new OAuth.OAuth(
+    'https://api.twitter.com/oauth/request_token',
+    'https://api.twitter.com/oauth/access_token',
+
+    TWITTER_CONSUMER_KEY,
+    TWITTER_CONSUMER_SECRET,
+
+    '1.0A',
+    null,
+    'HMAC-SHA1'
+  );
+
+  superagent.get("https://api.twitter.com/1.1/trends/place.json?id=1")
+
+    .sign(oauth, user.twitter.token, user.twitter.tokenSecret)
+
+    .end(function (res) {
+      console.log(user.twitter);
+      user.twitter.last_tweet = res.body[0];
+      console.log(user.twitter.last_tweet);
+  })
+}
 
 //Specify the views folder
 app.set("views", __dirname + "/views");
@@ -176,7 +199,7 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRetu
 app.get('/disconnect/twitter', function(req, res) { user.twitter = new Object(); res.redirect('/'); });
 
 
-
+app.get('/trend', function(req, res){ getTrends(); res.redirect('/'); });
 
 //POST method to create a chat message
 app.post("/message", function(request, response) {
