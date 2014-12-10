@@ -33,6 +33,9 @@ var OAuth = require('oauth');
 var helpers = require('express-helpers');
 helpers(app);
 
+//models
+var trends = require("./models/trends.js");
+
 //Twitter API Keys
 var TWITTER_CONSUMER_KEY = "7B7wyCdaM51Kcip9J8PoMLspI";
 var TWITTER_CONSUMER_SECRET = "fhUgnY7GdATLv9gsrT3VLx4rOHRpSQz6qbvVvoYWOuZYjAhJxB";
@@ -105,10 +108,11 @@ var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 // those parameters are token, tokenSecret, and profile
 
 //callbackURL: "http://"+server_ip_address+":"+server_port+"/auth/twitter/callback" for local use
+//callbackURL: "http://"+"nodesample-gschilli.rhcloud.com"+":"+"8000"+"/auth/twitter/callback" for openshift
 passport.use(new TwitterStrategy({
     consumerKey: TWITTER_CONSUMER_KEY,
     consumerSecret: TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://"+"nodesample-gschilli.rhcloud.com"+":"+"8000"+"/auth/twitter/callback"
+    callbackURL: "http://"+server_ip_address+":"+server_port+"/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
 
@@ -147,14 +151,15 @@ function getTrends(){
     null,
     'HMAC-SHA1'
   );
-  console.log("here");
-  superagent.get('https://api.twitter.com/1.1/trends/place.json?id=1')
+  superagent.get('https://api.twitter.com/1.1/trends/place.json?id=2450022')//woeid for USA
 
     .sign(oauth, user.twitter.token, user.twitter.tokenSecret)
 
     .end(function (res) {
-      console.log(res);
-      user.twitter.last_tweet = res.body[0];
+      for(var i=0; i<10; i++){
+        trends.push(res.body[0].trends[i].name);
+      }
+      user.twitter.trends=trends;
   })
 }
 

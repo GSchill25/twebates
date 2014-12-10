@@ -12,6 +12,14 @@
     <h1>Twebate</h1>
     </br>
     <div>
+      <% if (user.twitter.trends == undefined) { %>
+      <% } else { %>
+        <ul>
+          <% for(var i=0; i<10; i++) { %>
+           <li><%= user.twitter.trends[i] %></li>
+          <% } %>
+        </ul>
+      <% } %>
       
     </div>
     <div>

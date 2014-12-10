@@ -1,0 +1,3 @@
+trends = [];
+
+module.exports = trends;
