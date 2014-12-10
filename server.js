@@ -21,6 +21,11 @@ var express = require("express")
   , io = require("socket.io").listen(http)
   , _ = require("underscore");
 
+var mongoose = require('mongoose');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var flash = require('connect-flash');
+var configDB = require('./config/database.js');
 
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
@@ -39,6 +44,17 @@ var trends = require("./models/trends.js");
 //Twitter API Keys
 var TWITTER_CONSUMER_KEY = "7B7wyCdaM51Kcip9J8PoMLspI";
 var TWITTER_CONSUMER_SECRET = "fhUgnY7GdATLv9gsrT3VLx4rOHRpSQz6qbvVvoYWOuZYjAhJxB";
+
+ console.log("mongodb://" + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+  process.env.OPENSHIFT_APP_NAME);
+
+//initialize DB
+mongoose.connect(configDB.url);
+
+
 
 // models (normally would save to a DB)
 function User() {
@@ -80,7 +96,9 @@ app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
 app.use(passport.session());
 //app.use(app.router);
+app.use(flash());
 app.use(express.static(__dirname + '/public'));
+
 
 // serialize users
 passport.serializeUser(function(user, done) {
@@ -90,13 +108,11 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+require('./routes/routes.js')(app, passport);
+
+
+
 /* Server config */
-
-//Server's IP address
-//app.set("ipaddr", "127.0.0.1");
-
-//Server's port number
-//app.set("port", 8080);
 
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
