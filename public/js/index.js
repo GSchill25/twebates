@@ -23,7 +23,7 @@ function init() {
   }
 
   function grabTopics() {
-    $.twitter.trends.current(printSuccess);
+    //$.twitter.trends.current(printSuccess);
     //https://api.twitter.com/1.1/trends/place.json?id=1. 
   }
 
