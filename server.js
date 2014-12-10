@@ -51,8 +51,7 @@ var TWITTER_CONSUMER_SECRET = "fhUgnY7GdATLv9gsrT3VLx4rOHRpSQz6qbvVvoYWOuZYjAhJx
   process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
   process.env.OPENSHIFT_APP_NAME);
 
-//initialize DB
-mongoose.connect(configDB.url);
+
 
 
 
@@ -108,7 +107,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-require('./routes/routes.js')(app, passport);
+
 
 
 
@@ -178,6 +177,9 @@ function getTrends(){
       user.twitter.trends=trends;
   })
 }
+
+//initialize DB
+mongoose.connect(configDB.url);
 
 //Specify the views folder
 app.set("views", __dirname + "/views");
@@ -277,6 +279,8 @@ io.on("connection", function(socket){
   });
 
 });
+
+require('./routes/routes.js')(app, passport);
 
 //Start the http server at port and IP defined before
 http.listen(server_port, server_ip_address, function() {
