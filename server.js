@@ -79,16 +79,7 @@ function User() {
 // this is the user object that is referenced
 // throughout the application
 var user = new User();
-console.log(user.firstname);
 
-// all environments
-//app.configure(function() {
-  //app.set('views', __dirname + '/views');
-  //app.set('view engine', 'ejs');
-  //app.use(express.logger());
-  //app.use(express.cookieParser());
-  //app.use(express.bodyParser());
-  //app.use(express.methodOverride());
 app.use(session({ secret: 'keyboard cat' }));
   // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
@@ -127,7 +118,7 @@ var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 passport.use(new TwitterStrategy({
     consumerKey: TWITTER_CONSUMER_KEY,
     consumerSecret: TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://"+"nodesample-gschilli.rhcloud.com"+":"+"8000"+"/auth/twitter/callback"
+    callbackURL: callbackURL: "http://"+"nodesample-gschilli.rhcloud.com"+":"+"8000"+"/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
 
@@ -138,19 +129,12 @@ passport.use(new TwitterStrategy({
     user.twitter.token = token;
     user.twitter.tokenSecret = tokenSecret;
 
+
     // returns the user to the application
     return done(null, user);
   }
 ));
 
-/*
- The list of participants in our chatroom.
- The format of each participant will be:
- {
- id: "sessionId",
- name: "participantName"
- }
- */
 var participants = [];
 
 function getTrends(){
@@ -179,7 +163,7 @@ function getTrends(){
 }
 
 //initialize DB
-mongoose.connect(configDB.url);
+//mongoose.connect(configDB.url);
 
 //Specify the views folder
 app.set("views", __dirname + "/views");
@@ -195,12 +179,27 @@ app.use(bodyParser.json());
 
 /* Server routing */
 
-//Handle route "GET /", as in "http://localhost:8080/"
-app.get("/", function(request, response) {
-  getTrends();
-  //Render the view called "index"
-  response.render("index", {user: user});
 
+
+var mongo = require("./config/database.js")
+
+var routes = require('./routes/routes.js');
+
+
+//Handle route "GET /", as in "http://localhost:8080/"
+app.get("/main", function(request, response) {
+  //Render the view called "index"
+  mongo.insert( "user", user,
+                  function(model) {
+                  response.render("index", {user: user});}
+                );
+  
+
+});
+
+app.get("/", function(req, response){
+  getTrends();
+  response.render("login");
 });
 
 //twitter routes
@@ -213,7 +212,8 @@ app.get('/auth/twitter', passport.authenticate('twitter'));
 // the user to different places depending on whether or not they
 // authenticated, but in my case, i'm just using the index page
 // and a bunch of if statements in EJS anyways
-app.get('/auth/twitter/callback', passport.authenticate('twitter', { successReturnToOrRedirect: '/', failureRedirect: '/' }));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { successReturnToOrRedirect: '/main', failureRedirect: '/main' }));
+
 
 // this route will disconnect the user's Twitter account from
 // the user, which in this instance just means setting the
@@ -221,7 +221,7 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRetu
 app.get('/disconnect/twitter', function(req, res) { user.twitter = new Object(); res.redirect('/'); });
 
 
-app.get('/trend', function(req, res){ getTrends(); res.redirect('/'); });
+//app.get('/trend', function(req, res){ getTrends(); res.redirect('/'); });
 
 //POST method to create a chat message
 app.post("/message", function(request, response) {
@@ -280,7 +280,6 @@ io.on("connection", function(socket){
 
 });
 
-require('./routes/routes.js')(app, passport);
 
 //Start the http server at port and IP defined before
 http.listen(server_port, server_ip_address, function() {
