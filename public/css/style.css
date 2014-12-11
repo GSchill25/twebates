@@ -1,16 +1,4 @@
 
-textarea {
-    resize: none;
-}
-
-.inlineBlock {
-    display: inline-block;
-}
-
-.topAligned {
-    vertical-align: top;
-}
-
 #front-page-nav {
 	background-color: #455a64;
 }
