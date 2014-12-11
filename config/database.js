@@ -1,9 +1,3 @@
-//module.exports = {
-	//'url' : 'mongodb://admin:p3s2VUa5123Q@127.9.90.2:27017/nodesample'
-	//'mongodb://localhost:27017/nodesample'
-  
-//}
-//may need to change host
 
 var util = require("util");
 var mongoClient = require('mongodb').MongoClient;
@@ -23,12 +17,7 @@ mongoClient.connect(url, function(err, db) {
   mongoDB = db;
 });
 
-/* 
- * In the methods below, notice the use of a callback argument,
- * how that callback function is called, and the argument it is given.
- * Why can't the insert, find, and update functions just return the
- * data directly?
- */
+
 
 // INSERT
 exports.insert = function(collection, query, callback) {

@@ -6,14 +6,13 @@
  - Body parser (to parse JSON requests)
  - Underscore (because it's cool)
  - Socket.IO
+ - mongodb
+ - superagent
+ - oauth
+ - passport
 
- It is a common practice to name the variables after the module name.
- Ex: http is the "http" module, express is the "express" module, etc.
- The only exception is Underscore, where we use, conveniently, an
- underscore. Oh, and "socket.io" is simply called io. Seriously, the
- rest should be named after its module name.
+*/
 
- */
 var express = require("express")
   , app = express()
   , http = require("http").createServer(app)
@@ -55,24 +54,15 @@ var TWITTER_CONSUMER_SECRET = "fhUgnY7GdATLv9gsrT3VLx4rOHRpSQz6qbvVvoYWOuZYjAhJx
 
 
 
-// models (normally would save to a DB)
+
 function User() {
   this.id = null;
 
-  // we all start off as female, according to
-  // https://www.youtube.com/watch?v=z1Kdoja3hlk
-  this.firstname = "Jane";
 
-  // but then you might become a guy
-  if(Math.random() > 0.51){
-    this.firstname = "John";
-  }
+  this.firstname = "Test";
 
-  this.lastname = "Doe";
+  this.lastname = "User";
 
-  // this is a blank object that i'm using to
-  // assign various Twitter attributes to, 
-  // such as the profile and various tokens
   this.twitter = new Object();
 }
 
@@ -85,7 +75,6 @@ app.use(session({ secret: 'keyboard cat' }));
   // persistent login sessions (recommended).
 app.use(passport.initialize());
 app.use(passport.session());
-//app.use(app.router);
 app.use(flash());
 app.use(express.static(__dirname + '/public'));
 
@@ -122,9 +111,6 @@ passport.use(new TwitterStrategy({
   },
   function(token, tokenSecret, profile, done) {
 
-    // you will want to save each of these to the user,
-    // most likely in the DB in your case
-
     user.twitter.profile = profile;
     user.twitter.token = token;
     user.twitter.tokenSecret = tokenSecret;
@@ -137,7 +123,7 @@ passport.use(new TwitterStrategy({
 
 var participants = [];
 
-function getTrends(){
+function getTrends(){ //function to get most recent twitter trends in US
 
   var oauth = new OAuth.OAuth(
     'https://api.twitter.com/oauth/request_token',
@@ -162,8 +148,7 @@ function getTrends(){
   })
 }
 
-//initialize DB
-//mongoose.connect(configDB.url);
+
 
 //Specify the views folder
 app.set("views", __dirname + "/views");
@@ -177,7 +162,6 @@ app.use(express.static("public", __dirname + "/public"));
 //Tells server to support JSON requests
 app.use(bodyParser.json());
 
-/* Server routing */
 
 
 
@@ -186,9 +170,8 @@ var mongo = require("./config/database.js")
 var routes = require('./routes/routes.js');
 
 
-//Handle route "GET /", as in "http://localhost:8080/"
 app.get("/main", function(request, response) {
-  //Render the view called "index"
+  //Render the view called "index" and insert user info to db
   mongo.insert( "user", user.twitter.profile,
                   function(model) {
                   response.render("index", {user: user});}
@@ -198,30 +181,16 @@ app.get("/main", function(request, response) {
 });
 
 app.get("/", function(req, response){
-  getTrends();
+  getTrends(); //grab trends during login
   response.render("login");
 });
 
-//twitter routes
-// this route will be called when the user tries to connect to
-// Twitter. from there, Passport magic happens
-app.get('/auth/twitter', passport.authenticate('twitter'));
+app.get('/auth/twitter', passport.authenticate('twitter')); //authenticate with twitter
 
-// this is the callback route that happens after the user puts
-// in his or her information on the OAuth page. You can redirect
-// the user to different places depending on whether or not they
-// authenticated, but in my case, i'm just using the index page
-// and a bunch of if statements in EJS anyways
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successReturnToOrRedirect: '/main', failureRedirect: '/main' }));
-
-
-// this route will disconnect the user's Twitter account from
-// the user, which in this instance just means setting the
-// user's 'twitter' attribute to a blank object again
+//callback after twitter auth
 app.get('/disconnect/twitter', function(req, res) { user.twitter = new Object(); res.redirect('/'); });
-
-
-//app.get('/trend', function(req, res){ getTrends(); res.redirect('/'); });
+//route back to login on disconnect
 
 //POST method to create a chat message
 app.post("/message", function(request, response) {
@@ -258,11 +227,7 @@ io.on("connection", function(socket){
     io.sockets.emit("newConnection", {participants: participants});
   });
 
-  /*
-   When a user changes his name, we are expecting an event called "nameChange"
-   and then we'll emit an event called "nameChanged" to all participants with
-   the id and new name of the user who emitted the original message
-   */
+
   socket.on("nameChange", function(data) {
     _.findWhere(participants, {id: socket.id}).name = data.name;
     io.sockets.emit("nameChanged", {id: data.id, name: data.name});

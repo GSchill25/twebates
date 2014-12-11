@@ -125,10 +125,7 @@ function init() {
     $('#send').attr('disabled', (outgoingMessageValue.trim()).length > 0 ? false : true);
   }
 
-  /*
-   When a user updates his/her name, let the server know by
-   emitting the "nameChange" event
-   */
+
   function nameFocusOut() {
     var name = $('#name').val();
     socket.emit('nameChange', {id: sessionId, name: name});

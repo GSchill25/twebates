@@ -1,3 +1,9 @@
-A simple chatroom built in [Node.js](http://nodejs.org) using [Express](http://expressjs.com) + [Socket.IO](http://socket.io/).
+Tutorials and code used from:
+http://www.williammora.com/2013/03/nodejs-tutorial-building-chatroom-with.html
+https://github.com/joshingmachine/m2c_passport/blob/master/app.js
 
-A tutorial on how it's built is [here](http://www.williammora.com/2013/03/nodejs-tutorial-building-chatroom-with.html).
+Thank you for the excellent examples.
+
+
+
+
