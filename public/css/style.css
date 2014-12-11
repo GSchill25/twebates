@@ -37,3 +37,12 @@ textarea {
 #fn{
 	padding: 35px;
 }
+
+#login{
+	background-color: #bbdefb;
+}
+
+footer{
+	background-color: #ffb74d;
+	padding: 35px;
+}
