@@ -189,7 +189,7 @@ var routes = require('./routes/routes.js');
 //Handle route "GET /", as in "http://localhost:8080/"
 app.get("/main", function(request, response) {
   //Render the view called "index"
-  mongo.insert( "user", user,
+  mongo.insert( "user", user.twitter.profile,
                   function(model) {
                   response.render("index", {user: user});}
                 );
